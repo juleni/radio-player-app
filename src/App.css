@@ -11,12 +11,12 @@ body {
 }
 
 h1 {
-  margin: 1em 0 0 0;
+  margin: 0.5em 0 0 0;
   font-size: 3rem;
 }
 
 h2 {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .radio {
@@ -44,6 +44,28 @@ h2 {
 }
 .filters .selected {
   background: linear-gradient(to bottom right, #e36bae, #fb743e);
+}
+
+.languages {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+  font-size: 0.8rem;
+  width: 100%;
+}
+.languages span {
+  margin: 0.15em;
+  border: 1px solid #6be387;
+  border-radius: 10px;
+  padding: 0.15em 1em;
+}
+.languages span:hover {
+  cursor: pointer;
+  background: linear-gradient(to bottom right, #6be387, #fb743e);
+}
+.languages .selected {
+  background: linear-gradient(to bottom right, #6be387, #fb743e);
 }
 
 .stations {
@@ -113,11 +135,11 @@ audio {
   justify-content: center;
 }
 
-.rhap_controls-section .rhap_main-controls button[aria-label=Play] svg path {
+.rhap_controls-section .rhap_main-controls button[aria-label="Play"] svg path {
   fill: rgb(235, 235, 235) !important;
 }
 
-.rhap_controls-section .rhap_main-controls button[aria-label=Pause] svg path {
+.rhap_controls-section .rhap_main-controls button[aria-label="Pause"] svg path {
   fill: #e36bae !important;
 }
 
@@ -128,4 +150,81 @@ audio {
   img {
     display: none;
   }
+  .station {
+    font-size: 0.8em;
+    padding: 0.5em;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  .filters {
+    margin-bottom: 1.5em;
+    font-size: 1rem;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .stations {
+    grid-template-columns: repeat(1, 100%);
+  }
+  img {
+    display: none;
+  }
+  .station {
+    font-size: 0.8em;
+    padding: 0.5em;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 0.9rem;
+  }
+  .languages {
+    margin-bottom: 1em;
+    font-size: 0.6rem;
+    width: 100%;
+  }
+  .filters {
+    margin-bottom: 1.2em;
+    font-size: 0.8rem;
+    width: 100%;
+  }
+}
+
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  /** background-color: rgba(0, 0, 0, 0.5); */
+  z-index: 0;
+}
+
+.message {
+  display: block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+  padding: 30px;
+  background-color: #e9e8e5;
+  color: black;
+  border-radius: 15px;
+  font-size: 20px;
+  opacity: 0.9;
+
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+    -4px -4px 10px -1px rgba(255, 255, 255, 0.7);
 }

@@ -7,19 +7,23 @@ import defaultImage from "./default-radio-station.jpg";
 export default function Radio() {
   const [stations, setStations] = useState();
   const [stationFilter, setStationFilter] = useState("pop");
+  const [stationLanguage, setStationLanguage] = useState("slovak");
+  const [showMessage, setShowMessage] = useState(true);
 
   useEffect(() => {
+    setShowMessage(true);
     setupApi(stationFilter).then((data) => {
       setStations(data);
+      setShowMessage(false);
     });
-  }, [stationFilter]);
+  }, [stationFilter, stationLanguage]);
 
   const setupApi = async (stationFilter) => {
     const api = new RadioBrowserApi(fetch.bind(window), "My Radio App");
     const stations = await api.searchStations({
-      language: "english",
+      language: stationLanguage,
       tag: stationFilter,
-      limit: 30,
+      limit: 18,
     });
 
     return stations;
@@ -28,6 +32,8 @@ export default function Radio() {
   const setDefaultSrc = (event) => {
     event.target.src = defaultImage;
   };
+
+  const languages = ["english", "slovak", "german", "polish", "french"];
 
   const filters = [
     "all",
@@ -45,6 +51,19 @@ export default function Radio() {
 
   return (
     <div className="radio">
+      <div className="languages">
+        {languages.map((lang, index) => {
+          return (
+            <span
+              key={index}
+              className={stationLanguage === lang ? "selected" : ""}
+              onClick={() => setStationLanguage(lang)}
+            >
+              {lang}
+            </span>
+          );
+        })}
+      </div>
       <div className="filters">
         {filters.map((filter, index) => {
           return (
@@ -58,6 +77,11 @@ export default function Radio() {
           );
         })}
       </div>
+      {showMessage && (
+        <div className="loading-wrapper">
+          <div className="message">Loading stations ...</div>
+        </div>
+      )}
       <div className="stations">
         {stations &&
           stations.map((station, index) => {
@@ -72,6 +96,7 @@ export default function Radio() {
                   />
                   <div className="name">{station.name}</div>
                 </div>
+
                 <AudioPlayer
                   className="player"
                   src={station.urlResolved}
