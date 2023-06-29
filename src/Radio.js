@@ -1,4 +1,5 @@
-import { RadioBrowserApi } from "radio-browser-api";
+// import { RadioBrowserApi } from "radio-browser-api";
+import { RadioPlayer, StationSearchType } from "iradio.player.js";
 import React, { useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
@@ -19,12 +20,19 @@ export default function Radio() {
   }, [stationFilter, stationLanguage]);
 
   const setupApi = async (stationFilter) => {
-    const api = new RadioBrowserApi(fetch.bind(window), "My Radio App");
+    const api = new RadioPlayer();
+    await api.getStationsBy(StationSearchType.byTag, stationFilter);
     const stations = await api.searchStations({
-      language: stationLanguage,
-      tag: stationFilter,
-      limit: 18,
+      countryCode: "US",
+      limit: 5,
+      offset: 0, // this is the default - can be omited
     });
+    //const api = new RadioBrowserApi(fetch.bind(window), "My Radio App");
+    //const stations = await api.searchStations({
+    //  language: stationLanguage,
+    //  tag: stationFilter,
+    //  limit: 18,
+    //});
 
     return stations;
   };
