@@ -17,7 +17,6 @@ Application was made just for fun...
 ### Known Issues
 
 - Plays multiple radio stations at once when they start
-- The volume is default set to the highest level
 
 ### Powered by:
 
