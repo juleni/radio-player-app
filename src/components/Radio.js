@@ -117,6 +117,7 @@ export default function Radio() {
                 <AudioPlayer
                   className="player"
                   src={resolvedUrl}
+                  volume={0.5}
                   showJumpControls={false}
                   layout="stacked"
                   customProgressBarSection={[]}
