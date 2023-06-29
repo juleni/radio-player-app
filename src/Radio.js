@@ -1,5 +1,5 @@
 // import { RadioBrowserApi } from "radio-browser-api";
-import { RadioPlayer, StationSearchType } from "iradio.player.js";
+import { RadioPlayer } from "iradio.player.js";
 import React, { useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
@@ -7,7 +7,7 @@ import defaultImage from "./default-radio-station.jpg";
 
 export default function Radio() {
   const [stations, setStations] = useState();
-  const [stationFilter, setStationFilter] = useState("pop");
+  const [stationFilter, setStationFilter] = useState("all");
   const [stationLanguage, setStationLanguage] = useState("slovak");
   const [showMessage, setShowMessage] = useState(true);
 
@@ -21,10 +21,11 @@ export default function Radio() {
 
   const setupApi = async (stationFilter) => {
     const api = new RadioPlayer();
-    await api.getStationsBy(StationSearchType.byTag, stationFilter);
     const stations = await api.searchStations({
-      countryCode: "US",
-      limit: 5,
+      countryCode: "SK",
+      // language: stationLanguage,
+      tag: stationFilter === "all" ? "" : stationFilter,
+      limit: 20,
       offset: 0, // this is the default - can be omited
     });
     //const api = new RadioBrowserApi(fetch.bind(window), "My Radio App");
@@ -108,7 +109,6 @@ export default function Radio() {
                   />
                   <div className="name">{station.name}</div>
                 </div>
-
                 <AudioPlayer
                   className="player"
                   src={resolvedUrl}
