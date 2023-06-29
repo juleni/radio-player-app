@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/radio-player-app/static/css/main.cda454a2.css",
-    "main.js": "/radio-player-app/static/js/main.c67740fc.js",
+    "main.js": "/radio-player-app/static/js/main.aa5332e0.js",
     "static/media/default-radio-station.jpg": "/radio-player-app/static/media/default-radio-station.f5e8f76264762c093e26.jpg",
     "index.html": "/radio-player-app/index.html",
     "main.cda454a2.css.map": "/radio-player-app/static/css/main.cda454a2.css.map",
-    "main.c67740fc.js.map": "/radio-player-app/static/js/main.c67740fc.js.map"
+    "main.aa5332e0.js.map": "/radio-player-app/static/js/main.aa5332e0.js.map"
   },
   "entrypoints": [
     "static/css/main.cda454a2.css",
-    "static/js/main.c67740fc.js"
+    "static/js/main.aa5332e0.js"
   ]
 }
