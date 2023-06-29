@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/radio-player-app/static/css/main.f22e8931.css",
-    "main.js": "/radio-player-app/static/js/main.16f06210.js",
+    "main.css": "/radio-player-app/static/css/main.d897f64c.css",
+    "main.js": "/radio-player-app/static/js/main.8fcde37c.js",
     "static/media/default-radio-station.jpg": "/radio-player-app/static/media/default-radio-station.f5e8f76264762c093e26.jpg",
-    "static/media/logo.svg": "/radio-player-app/static/media/logo.142d3f72a80cec0606d2148a9b3f3b25.svg",
+    "static/media/logo.svg": "/radio-player-app/static/media/logo.c32ccfb0329a73c2d067d06e4de2f736.svg",
     "index.html": "/radio-player-app/index.html",
-    "main.f22e8931.css.map": "/radio-player-app/static/css/main.f22e8931.css.map",
-    "main.16f06210.js.map": "/radio-player-app/static/js/main.16f06210.js.map"
+    "main.d897f64c.css.map": "/radio-player-app/static/css/main.d897f64c.css.map",
+    "main.8fcde37c.js.map": "/radio-player-app/static/js/main.8fcde37c.js.map"
   },
   "entrypoints": [
-    "static/css/main.f22e8931.css",
-    "static/js/main.16f06210.js"
+    "static/css/main.d897f64c.css",
+    "static/js/main.8fcde37c.js"
   ]
 }
