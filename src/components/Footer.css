@@ -11,10 +11,12 @@
   padding-left: 1em;
 }
 a {
+  color: rgb(76, 62, 95);
   text-decoration: none;
   font-weight: bolder;
 }
 
 .juleni a:hover {
   cursor: pointer;
+  color: rgb(31, 22, 45);
 }
