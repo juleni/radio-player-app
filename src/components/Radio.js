@@ -1,9 +1,9 @@
-// import { RadioBrowserApi } from "radio-browser-api";
-import { RadioPlayer } from "iradio.player.js";
+// import { RadioPlayer } from "iradio.player.js";
 import React, { useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import defaultImage from "./default-radio-station.jpg";
+import dataStations from "../data/my-stations.json";
+import defaultImage from "../default-radio-station.jpg";
 
 export default function Radio() {
   const [stations, setStations] = useState();
@@ -20,46 +20,50 @@ export default function Radio() {
   }, [stationFilter, stationLanguage]);
 
   const setupApi = async (stationFilter) => {
+    /**
+     * TODO: Do this api as 2nd method for getting stations - implement switch in settings
+     * Radio player retrieves lots of stations but not all are playing and there are duplicates as well
     const api = new RadioPlayer();
     const stations = await api.searchStations({
       countryCode: "SK",
       // language: stationLanguage,
       tag: stationFilter === "all" ? "" : stationFilter,
-      limit: 20,
+      limit: 1000,
       offset: 0, // this is the default - can be omited
     });
-    //const api = new RadioBrowserApi(fetch.bind(window), "My Radio App");
-    //const stations = await api.searchStations({
-    //  language: stationLanguage,
-    //  tag: stationFilter,
-    //  limit: 18,
-    //});
-
-    return stations;
+    // console.log(JSON.stringify(stations));
+    **/
+    if (stationFilter === "all") return dataStations;
+    else {
+      const filteredStations = dataStations.filter((st) =>
+        st.tags.includes(stationFilter)
+      );
+      return filteredStations;
+    }
   };
 
   const setDefaultSrc = (event) => {
     event.target.src = defaultImage;
   };
 
-  const languages = ["english", "slovak", "german", "polish", "french"];
+  // const languages = ["english", "slovak", "german", "polish", "french"];
 
   const filters = [
     "all",
-    "classical",
-    "country",
-    "dance",
-    "disco",
-    "house",
-    "jazz",
-    "pop",
-    "rap",
-    "retro",
+    "various",
     "rock",
+    "pop",
+    "dance",
+    "oldies",
+    "jazz",
+    "classical",
+    "rtvs",
+    "child",
   ];
 
   return (
     <div className="radio">
+      {/*
       <div className="languages">
         {languages.map((lang, index) => {
           return (
@@ -73,6 +77,7 @@ export default function Radio() {
           );
         })}
       </div>
+      */}
       <div className="filters">
         {filters.map((filter, index) => {
           return (
