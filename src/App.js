@@ -1,12 +1,14 @@
 import "./App.css";
-import Radio from "./Radio";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Radio from "./components/Radio";
 
 function App() {
   return (
     <div className="App">
-      <h1>Radio Player App</h1>
-      <h2>Choose language, genre, station and start listening</h2>
+      <Header />
       <Radio />
+      <Footer />
     </div>
   );
 }
