@@ -85,6 +85,10 @@ export default function Radio() {
       <div className="stations">
         {stations &&
           stations.map((station, index) => {
+            let resolvedUrl = "" + station.urlResolved;
+            if (resolvedUrl.indexOf("http://") === 0) {
+              resolvedUrl = resolvedUrl.replace("http://", "https://");
+            }
             return (
               <div className="station" key={index}>
                 <div className="stationName">
@@ -99,7 +103,7 @@ export default function Radio() {
 
                 <AudioPlayer
                   className="player"
-                  src={station.urlResolved}
+                  src={resolvedUrl}
                   showJumpControls={false}
                   layout="stacked"
                   customProgressBarSection={[]}
